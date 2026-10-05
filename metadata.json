@@ -1,0 +1,6 @@
+{
+  "name": "SmartFarm AI",
+  "description": "SmartFarm AI: Agricultural platform for Nigerian cassava farmers with disease detection, expert treatment plans, verified inputs, market prices, and cassava marketplace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

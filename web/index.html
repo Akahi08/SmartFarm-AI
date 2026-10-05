@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SmartFarm AI - Kogi State Cassava Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="images/smartfarm_icon_1791065855223.jpg">
+</head>
+<body>
+  <div id="app-container">
+
+    <!-- Top Navigation Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">🌿</div>
+        <div class="brand-info">
+          <h1 id="topbar-title">SmartFarm AI</h1>
+          <p id="topbar-role">Musa Ibrahim (FARMER)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="role-select-btn" onclick="openRoleModal()">
+          <span>🔄</span> Switch Role
+        </button>
+        <button class="btn btn-outline" style="padding: 6px 10px; font-size: 13px;" onclick="openWebShareModal()" title="Share Website Link">
+          🌐
+        </button>
+        <button class="btn btn-outline" style="padding: 6px 10px; font-size: 13px;" onclick="navigateTo('legal')" title="Privacy & Legal">
+          ℹ️
+        </button>
+      </div>
+    </header>
+
+    <!-- Secure Transactions Bar -->
+    <div class="test-banner" style="background: var(--primary-container); color: var(--primary-dark); border-bottom: 1px solid #BBF7D0;">
+      <span class="pill-badge" style="background: var(--primary);">PROTECTED</span>
+      <span>Secure Paystack payments & milestone protections active.</span>
+    </div>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main id="main-content">
+      <!-- Injected dynamically by app.js -->
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" id="nav-home" onclick="navigateTo('home')">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" id="nav-inputs" onclick="navigateTo('inputs')">
+        <span class="nav-icon">🛍️</span>
+        <span>Inputs</span>
+      </button>
+      <button class="nav-btn" id="nav-market" onclick="navigateTo('market')">
+        <span class="nav-icon">📈</span>
+        <span>Market</span>
+      </button>
+      <button class="nav-btn" id="nav-orders" onclick="navigateTo('orders')">
+        <span class="nav-icon">🧾</span>
+        <span>Orders</span>
+      </button>
+      <button class="nav-btn" id="nav-expert" onclick="navigateTo('expert')">
+        <span class="nav-icon">👨‍🌾</span>
+        <span>Expert</span>
+      </button>
+    </nav>
+
+    <!-- Role Switcher Modal -->
+    <div class="modal-overlay" id="role-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Select User Role</h3>
+          <button class="close-btn" onclick="closeModal('role-modal')">×</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">
+          Switch between roles to test all platform features:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="selectRole('FARMER')">
+            👨‍🌾 <div><strong>Musa Ibrahim</strong><br><small>Farmer (Dekina LGA, Kogi)</small></div>
+          </button>
+          <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="selectRole('BUYER')">
+            🏭 <div><strong>Alhaji Garba</strong><br><small>Garri Processor / Root Buyer (Lokoja)</small></div>
+          </button>
+          <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="selectRole('SUPPLIER')">
+            📦 <div><strong>Kogi Agro-Allied Supplies</strong><br><small>Verified Agro-Dealer (Lokoja)</small></div>
+          </button>
+          <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="selectRole('CONSULTANT')">
+            🔬 <div><strong>Agricultural Extension Consultant</strong><br><small>Verified Expert Advisor (Kogi)</small></div>
+          </button>
+          <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="selectRole('ADMIN')">
+            ⚙️ <div><strong>SmartFarm Administrator</strong><br><small>Platform Console & Ledger</small></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Link Share Modal -->
+    <div class="modal-overlay" id="web-share-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>🌐 Instant Web Access Link</h3>
+          <button class="close-btn" onclick="closeModal('web-share-modal')">×</button>
+        </div>
+        <div class="alert-box alert-success">
+          💡 <strong>No App Download Needed:</strong> Farmers do not need to install an app or use phone storage. They can open SmartFarm AI directly in Chrome, Opera Mini, or any mobile browser.
+        </div>
+        <div class="form-group">
+          <label>Website Link:</label>
+          <input type="text" class="form-input" id="share-link-input" readonly value="https://ais-pre-ogle2dewyqnmnqjsmoznzh-43248366371.europe-west2.run.app">
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-secondary" style="flex: 1;" onclick="copyWebLink()">
+            📋 Copy Link
+          </button>
+          <button class="btn btn-primary" style="flex: 1;" onclick="openWebLinkDirectly()">
+            🚀 Open Web
+          </button>
+        </div>
+        <button class="btn btn-block" style="background: #25D366; color: white;" onclick="shareOnWhatsApp()">
+          💬 Share Link via WhatsApp to Farmers
+        </button>
+      </div>
+    </div>
+
+    <!-- General Info Modal -->
+    <div class="modal-overlay" id="info-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="info-modal-title">Notice</h3>
+          <button class="close-btn" onclick="closeModal('info-modal')">×</button>
+        </div>
+        <div id="info-modal-body" style="font-size: 13px; line-height: 1.6; color: var(--text-main);"></div>
+        <button class="btn btn-primary btn-block" onclick="closeModal('info-modal')">Understood</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
